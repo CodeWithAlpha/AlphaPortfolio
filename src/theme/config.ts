@@ -1,5 +1,7 @@
+import { presets } from "./preset";
 import { SettingsValueProps } from "./types";
 
 export const defaultSettings: SettingsValueProps = {
-  themeMode: "dark",
+  themeMode: "light",
+  themeColorPreset: presets[0],
 };

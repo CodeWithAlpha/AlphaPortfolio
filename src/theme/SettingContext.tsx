@@ -7,12 +7,18 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { SettingsContextProps } from "./types";
+import {
+  ColorVariants,
+  SettingsContextProps,
+  SettingsValueProps,
+} from "./types";
 import { defaultSettings } from "./config";
+import { presets } from "./preset";
 
 const InitialState: SettingsContextProps = {
-  themeMode: "light",
+  ...defaultSettings,
   onToggleMode: () => {},
+  onChangeColorPreset: () => {},
 };
 export const SettingContext = createContext(InitialState);
 
@@ -30,19 +36,28 @@ type settingProviderProps = {
 };
 
 export function SettingProvider({ children }: settingProviderProps) {
-  const [settings, setSettings] = useState(defaultSettings);
+  const [settings, setSettings] = useState<SettingsValueProps>(defaultSettings);
 
   const onToggleMode = useCallback(() => {
     const themeMode = settings.themeMode == "light" ? "dark" : "light";
     setSettings({ ...settings, themeMode });
   }, [setSettings, settings]);
 
+  const onChangeColorPreset = useCallback(
+    (index: number) => {
+      const themeColor: ColorVariants = presets[index];
+      setSettings({ ...settings, themeColorPreset: themeColor });
+    },
+    [settings, setSettings]
+  );
+
   const value = useMemo(
     () => ({
       ...settings,
       onToggleMode,
+      onChangeColorPreset,
     }),
-    [settings]
+    [settings, onToggleMode, onChangeColorPreset]
   );
   return (
     <>

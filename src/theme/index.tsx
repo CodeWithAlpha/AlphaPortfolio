@@ -16,6 +16,7 @@ import shadows from "./shadows";
 import customShadows from "./customShadows";
 import componentsOverride from "./overrides";
 import GlobalStyles from "./globalStyles";
+import { presets } from "./preset";
 
 // ----------------------------------------------------------------------
 
@@ -24,17 +25,16 @@ type Props = {
 };
 
 export default function ThemeProvider({ children }: Props) {
-  const { themeMode } = useSettingContext();
-
+  const { themeMode, themeColorPreset } = useSettingContext();
   const themeOptions: ThemeOptions = useMemo(
     () => ({
-      palette: palette(themeMode),
+      palette: { ...palette(themeMode), primary: themeColorPreset },
       typography,
       shape: { borderRadius: 8 },
       shadows: shadows(themeMode),
       customShadows: customShadows(themeMode),
     }),
-    [themeMode]
+    [themeMode, themeColorPreset]
   );
 
   const theme = createTheme(themeOptions);
