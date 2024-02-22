@@ -1,24 +1,5 @@
 import { Button, Stack, Typography, styled } from "@mui/material";
-
-const MyThemeComponent = styled("button")(({ theme }) => ({
-  color: theme.palette.common.black,
-  backgroundColor: "transparent",
-  paddingTop: theme.spacing(1.5),
-  paddingBottom: theme.spacing(1.5),
-  paddingLeft: theme.spacing(4),
-  paddingRight: theme.spacing(4),
-  border: `2px solid ${theme.palette.primary.main}`,
-  borderRadius: 2.5 * theme.shape.borderRadius,
-  outline: "none",
-  fontSize: 18,
-  transition: `${theme.transitions.create(["background-color", "transform"], {
-    duration: theme.transitions.duration.standard,
-  })}`,
-  "&:hover": {
-    color: "white",
-    backgroundColor: `${theme.palette.primary.main}`,
-  },
-}));
+import CustomButton from "./button/CustomButton";
 
 function Header() {
   return (
@@ -53,7 +34,7 @@ function Header() {
           <Typography variant="h6" fontWeight={500}>
             Contact
           </Typography>
-          <MyThemeComponent>Download CV</MyThemeComponent>
+          <CustomButton variant="outlined">Download CV</CustomButton>
         </Stack>
       </Stack>
     </Stack>
