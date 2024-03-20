@@ -1,15 +1,11 @@
-import { useSettingContext } from "./theme/SettingContext";
-import Header from "./components/Header";
-import { Stack } from "@mui/material";
-import Home from "./pages/Home";
+import Router from "./routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  const { onToggleMode, onChangeColorPreset } = useSettingContext();
-
   return (
-    <Home>
-      <Header />
-    </Home>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 

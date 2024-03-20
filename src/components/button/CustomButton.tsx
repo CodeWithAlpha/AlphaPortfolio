@@ -1,6 +1,7 @@
 import { Button, styled, useTheme } from "@mui/material";
 import { ReactNode } from "react";
 import { variantValuesProps } from "./types";
+import { useSettingContext } from "../../theme/SettingContext";
 
 type props = {
   variant: variantValuesProps;
@@ -8,11 +9,17 @@ type props = {
 };
 
 export default function CustomButton({ children, variant, ...other }: props) {
+  const { themeMode } = useSettingContext();
+
   const Button = styled("button")(({ theme }) => ({
     color:
       variant == "outlined"
-        ? theme.palette.common.black
-        : theme.palette.common.white,
+        ? themeMode == "light"
+          ? "black"
+          : "white"
+        : themeMode == "light"
+        ? "white"
+        : "black",
     cursor: "pointer",
     backgroundColor: "transparent",
     paddingTop: theme.spacing(1.5),
@@ -30,7 +37,14 @@ export default function CustomButton({ children, variant, ...other }: props) {
     overflow: "hidden",
     zIndex: 9,
     "&:hover": {
-      color: variant == "outlined" ? "white" : "black",
+      color:
+        variant == "outlined"
+          ? themeMode == "light"
+            ? "white"
+            : "black"
+          : themeMode == "light"
+          ? "black"
+          : "white",
       // backgroundColor: `${theme.palette.primary.main}`,
     },
     "&::after": {
@@ -52,7 +66,14 @@ export default function CustomButton({ children, variant, ...other }: props) {
       left: 0,
       bottom: variant == "outlined" ? 0 : -60,
       height: "100%",
-      color: variant == "outlined" ? "white" : "black",
+      color:
+        variant == "outlined"
+          ? themeMode == "light"
+            ? "white"
+            : "black"
+          : themeMode == "light"
+          ? "black"
+          : "white",
       transition: `${theme.transitions.create(["bottom", "transform"], {
         duration: theme.transitions.duration.complex,
       })}`,

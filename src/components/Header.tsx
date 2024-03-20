@@ -1,9 +1,13 @@
 import { Button, Stack, Typography, styled } from "@mui/material";
 import CustomButton from "./button/CustomButton";
+import { useSettingContext } from "../theme/SettingContext";
+import { LightMode } from "../assets/Icons/Lightmode";
+import { Darkmode } from "../assets/Icons/Darkmode";
 
-function Header() {
+function Header({ backgroundColor }: any) {
+  const { themeMode, onToggleMode } = useSettingContext();
   return (
-    <Stack>
+    <Stack sx={{ backgroundColor: backgroundColor }}>
       <Stack
         width={"80%"}
         height={80}
@@ -35,6 +39,9 @@ function Header() {
             Contact
           </Typography>
           <CustomButton variant="outlined">Download CV</CustomButton>
+          <Stack onClick={onToggleMode}>
+            {themeMode == "dark" ? <LightMode /> : <Darkmode />}
+          </Stack>
         </Stack>
       </Stack>
     </Stack>
