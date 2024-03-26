@@ -10,11 +10,11 @@ function About() {
     <Stack
       sx={{
         position: "relative",
-        height: 200,
+        height: "fit-content",
         backgroundImage: `url('${bg1}'), url('${bg2}')`,
         backgroundPosition: "top left, bottom right",
         backgroundRepeat: "no-repeat, no-repeat",
-        backgroundSize: "contain",
+        backgroundSize: "10%",
       }}
     >
       <Stack
@@ -26,7 +26,7 @@ function About() {
         <img src={aboutImage} alt="about" height={"80%"} />
         <Stack>
           <Typography variant={"body1"} fontSize={30} color={"primary"}>
-            I'm a Desgner
+            I'm a Developer
           </Typography>
           <Typography
             variant={"body1"}

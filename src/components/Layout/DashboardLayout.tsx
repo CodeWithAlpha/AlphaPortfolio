@@ -24,10 +24,10 @@ function DashboardLayout() {
 
   return (
     <>
-      <Stack sx={{ position: "fixed", top: 0, width: "100%" }}>
+      <Stack sx={{ position: "fixed", top: 0, width: "100%", zIndex: 999 }}>
         <Header
           backgroundColor={
-            scroll > 10
+            scroll > window.innerHeight
               ? themeMode == "light"
                 ? "white"
                 : "black"

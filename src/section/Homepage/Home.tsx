@@ -6,6 +6,9 @@ import CustomButton from "../../components/button/CustomButton";
 import { Linkedin } from "../../assets/Icons/Linkedin";
 import homeAvatar from "../../assets/avatar.png";
 import { useSettingContext } from "../../theme/SettingContext";
+import reactLogo from "../../assets/skills/logo/react.png";
+import htmlLogo from "../../assets/skills/logo/JavaScript-logo.png";
+import jsLogo from "../../assets/skills/logo/html.jpg";
 
 function Home() {
   const { themeMode } = useSettingContext();
@@ -64,8 +67,39 @@ function Home() {
             <Linkedin />
           </Stack>
         </Stack>
-        <Stack flexDirection={"row"} justifyContent={"center"}>
+        <Stack
+          flexDirection={"row"}
+          justifyContent={"center"}
+          sx={{ position: "relative" }}
+        >
           <img src={homeAvatar} height={"70%"} width={"70%"} />
+          <img
+            src={htmlLogo}
+            style={{
+              position: "absolute",
+              top: 5,
+              left: 5,
+              width: 100,
+            }}
+          />
+          <img
+            src={reactLogo}
+            style={{
+              position: "absolute",
+              top: 5,
+              right: 5,
+              width: 100,
+            }}
+          />
+          <img
+            src={jsLogo}
+            style={{
+              position: "absolute",
+              bottom: 5,
+              left: "50%",
+              width: 100,
+            }}
+          />
         </Stack>
       </Grid>
     </Stack>
