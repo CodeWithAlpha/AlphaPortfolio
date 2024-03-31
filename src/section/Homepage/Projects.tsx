@@ -44,12 +44,12 @@ function Projects() {
         >
           Portfolio
         </Typography>
-        <Typography variant="body1" fontSize={44}>
+        <Typography variant="body1" fontSize={26}>
           My Amazing Works
         </Typography>
         <Typography
           variant="h6"
-          fontSize={26}
+          fontSize={16}
           color={"text.secondary"}
           maxWidth={700}
           textAlign={"center"}
