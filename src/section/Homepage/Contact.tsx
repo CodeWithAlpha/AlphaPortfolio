@@ -46,15 +46,15 @@ function Contact() {
         }}
         viewport={{ once: false }}
       >
-        <Typography variant={"body1"} fontSize={30} color={"primary"}>
+        <Typography variant={"body1"} fontSize={24} color={"primary"}>
           Contact Me
         </Typography>
-        <Typography variant={"body1"} fontSize={40}>
+        <Typography variant={"body1"} fontSize={26}>
           I Want To Hear From You
         </Typography>
         <Typography
           variant={"subtitle2"}
-          sx={{ fontSize: 26 }}
+          sx={{ fontSize: 16 }}
           color={"text.secondary"}
           textAlign={"center"}
         >
@@ -115,7 +115,7 @@ function Contact() {
               }}
               viewport={{ once: false }}
             >
-              <Typography variant={"body2"} fontSize={34}>
+              <Typography variant={"body2"} fontSize={26}>
                 Address
               </Typography>
               <Typography variant={"subtitle1"}>
@@ -170,7 +170,7 @@ function Contact() {
               }}
               viewport={{ once: false }}
             >
-              <Typography variant={"body2"} fontSize={34}>
+              <Typography variant={"body2"} fontSize={26}>
                 Email
               </Typography>
               <Typography variant={"subtitle1"}>Srd7505@gmail.com</Typography>
@@ -223,7 +223,7 @@ function Contact() {
               }}
               viewport={{ once: false }}
             >
-              <Typography variant={"body2"} fontSize={34}>
+              <Typography variant={"body2"} fontSize={26}>
                 Phone
               </Typography>
               <Typography variant={"subtitle1"}>+91 7505660766</Typography>

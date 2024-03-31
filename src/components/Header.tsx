@@ -27,7 +27,17 @@ function Header({ backgroundColor, scrollTo }: any) {
   if (width < 800) {
     return (
       <>
-        <Stack sx={{ backgroundColor: backgroundColor }}>
+        <Stack
+          sx={{ backgroundColor: backgroundColor }}
+          px={2}
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          <Typography color={"primary.main"} variant="h3">
+            Alpha
+          </Typography>
+
           <Stack height={{ xs: 40, md: 80 }} alignItems={"end"}>
             <Hamburger onClick={() => setOpen(!open)} />
           </Stack>
@@ -64,13 +74,13 @@ function Header({ backgroundColor, scrollTo }: any) {
                       color={
                         active == item.id ? "primary.main" : "text.secondary"
                       }
-                      variant={active == item.id ? "h6" : "subtitle1"}
+                      // variant={active == item.id ? "h6" : "subtitle1"}
                       onClick={() => {
                         scrollTo(item.id);
                         setActive(item.id);
                         setOpen(!open);
                       }}
-                      sx={{ cursor: "pointer" }}
+                      sx={{ cursor: "pointer", fontSize: 30 }}
                       component={motion.div}
                       initial={{ x: "100vw" }}
                       animate={{ x: 0 }}

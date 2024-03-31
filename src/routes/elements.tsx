@@ -1,11 +1,12 @@
 import { Suspense, lazy, ElementType } from "react";
+import LoadingScreen from "../components/loadingScreen/LoadingScreen";
 // components
 
 // ----------------------------------------------------------------------
 
 const Loadable = (Component: ElementType) => (props: any) =>
   (
-    <Suspense fallback={"Loading..."}>
+    <Suspense fallback={<LoadingScreen />}>
       <Component {...props} />
     </Suspense>
   );
