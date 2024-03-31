@@ -6,39 +6,51 @@ import CustomButton from "../../components/button/CustomButton";
 import { Linkedin } from "../../assets/Icons/Linkedin";
 import homeAvatar from "../../assets/avatar.png";
 import { useSettingContext } from "../../theme/SettingContext";
-import reactLogo from "../../assets/skills/logo/react.png";
+import reactLogo from "../../assets/skills/logo/react.svg";
 import htmlLogo from "../../assets/skills/logo/JavaScript-logo.png";
-import jsLogo from "../../assets/skills/logo/html.jpg";
+import jsLogo from "../../assets/skills/logo/html.svg";
+
+//framer motion
+import { AnimatePresence, motion, useTime, useTransform } from "framer-motion";
+import useWindowDimensions from "../../components/hooks/useWindowDiamensions";
 
 function Home() {
   const { themeMode } = useSettingContext();
-
   const theme = useTheme();
+
+  const { height, width } = useWindowDimensions();
+
   return (
     <Stack
       sx={{
-        height: "100vh",
+        minHeight: "100vh",
         backgroundImage: `url(${
           themeMode == "light" ? lightHomeImage : darkHomeImage
         })`,
       }}
+      pt={8}
     >
-      <Grid
-        display={"grid"}
-        gridTemplateColumns={{ sm: "repeat(2, 1fr)" }}
-        sx={{ placeItems: "center" }}
-        height={"100%"}
-        width="80%"
+      <Stack
+        flexDirection={{ xs: "column-reverse", md: "row" }}
+        justifyContent="center"
+        width={{ xs: "95%", md: "80%" }}
         margin={"auto"}
       >
-        <Stack gap={1}>
-          <Typography sx={{ color: "primary.main", fontSize: 40 }}>
+        <Stack gap={1} mt={2} flexBasis={"50%"}>
+          <Typography
+            sx={{
+              color: "primary.main",
+              fontSize: { xs: 20, md: 40 },
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
             Hello I'm
           </Typography>
           <Typography
             sx={{
-              fontSize: 60,
+              fontSize: { xs: 38, md: 60 },
               fontWeight: 600,
+              textAlign: { xs: "center", md: "left" },
             }}
           >
             Sharad Choudhary
@@ -51,7 +63,11 @@ function Home() {
             From <span style={{ color: "#8068f0" }}> Noida </span>
           </Typography>
           <Typography
-            sx={{ color: "text.secondary", fontSize: 20, width: "70%" }}
+            sx={{
+              color: "text.secondary",
+              fontSize: 20,
+              width: { xs: "95%", md: "70%" },
+            }}
           >
             I'm creative Developer based in Noida, and I'm very passionate and
             dedicated to my work.
@@ -71,37 +87,71 @@ function Home() {
           flexDirection={"row"}
           justifyContent={"center"}
           sx={{ position: "relative" }}
+          flexBasis={"50%"}
         >
-          <img src={homeAvatar} height={"70%"} width={"70%"} />
-          <img
+          <motion.img src={homeAvatar} width={"70%"} />
+          <motion.img
             src={htmlLogo}
             style={{
               position: "absolute",
               top: 5,
               left: 5,
-              width: 100,
+              width: width < 600 ? 50 : 100,
+            }}
+            initial={{ y: -10 }}
+            animate={{
+              y: 10,
+            }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: 0.5,
             }}
           />
-          <img
+          <motion.img
             src={reactLogo}
             style={{
               position: "absolute",
               top: 5,
               right: 5,
-              width: 100,
+              width: width < 600 ? 50 : 100,
+            }}
+            initial={{ y: -10 }}
+            animate={{
+              y: 10,
+            }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: 0,
             }}
           />
-          <img
+          <motion.img
             src={jsLogo}
             style={{
               position: "absolute",
               bottom: 5,
               left: "50%",
-              width: 100,
+              width: width < 600 ? 50 : 100,
+            }}
+            initial={{ y: -10 }}
+            animate={{
+              y: 10,
+            }}
+            transition={{
+              duration: 2,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "reverse",
+              delay: 1,
             }}
           />
         </Stack>
-      </Grid>
+      </Stack>
     </Stack>
   );
 }

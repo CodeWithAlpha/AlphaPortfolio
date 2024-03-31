@@ -5,7 +5,7 @@ import { Suspense, lazy, ElementType } from "react";
 
 const Loadable = (Component: ElementType) => (props: any) =>
   (
-    <Suspense fallback={"LoadingButton..."}>
+    <Suspense fallback={"Loading..."}>
       <Component {...props} />
     </Suspense>
   );

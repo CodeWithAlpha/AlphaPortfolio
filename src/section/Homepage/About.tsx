@@ -4,6 +4,7 @@ import bg1 from "../../assets/about/1.png";
 import bg2 from "../../assets/about/2.png";
 import aboutImage from "../../assets/about/about.jpg";
 import CustomButton from "../../components/button/CustomButton";
+import { motion } from "framer-motion";
 
 function About() {
   return (
@@ -21,16 +22,52 @@ function About() {
         flexDirection={{ sm: "row" }}
         gap={10}
         alignItems={"center"}
-        sx={{ width: { sm: "95%", md: "80%" }, margin: { xs: 5, sm: "auto" } }}
+        sx={{ width: { sm: "95%", md: "80%" }, margin: { xs: 2, sm: "auto" } }}
       >
-        <img src={aboutImage} alt="about" height={"80%"} />
-        <Stack>
+        <Stack
+          component={motion.div}
+          initial={{
+            opacity: 0,
+            x: -100,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: {
+              duration: 1,
+              delay: 0.5,
+              type: "spring",
+              stiffness: 120,
+            },
+          }}
+          viewport={{ once: false }}
+        >
+          <img src={aboutImage} alt="about" height={"80%"} />
+        </Stack>
+        <Stack
+          component={motion.div}
+          initial={{
+            opacity: 0,
+            x: 100,
+          }}
+          whileInView={{
+            opacity: 1,
+            x: 0,
+            transition: {
+              duration: 1,
+              delay: 0.5,
+              type: "spring",
+              stiffness: 120,
+            },
+          }}
+          viewport={{ once: false }}
+        >
           <Typography variant={"body1"} fontSize={30} color={"primary"}>
             I'm a Developer
           </Typography>
           <Typography
             variant={"body1"}
-            fontSize={50}
+            fontSize={{ xs: 30, md: 50 }}
             width={{ xs: "100%", sm: 500 }}
           >
             I Can Design Anything You Want
@@ -46,7 +83,28 @@ function About() {
             make your project a success. I enjoy every step of the design
             process, from discussion and collaboration.
           </Typography>
-          <Stack sx={{ width: "fit-content" }} mt={6}>
+          <Stack
+            sx={{ width: "fit-content" }}
+            mt={6}
+            component={motion.div}
+            initial={{
+              opacity: 0,
+              x: -15,
+              rotate: 180,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+              rotate: 360,
+              transition: {
+                duration: 0.5,
+                delay: 0.5,
+                type: "spring",
+                stiffness: 120,
+              },
+            }}
+            viewport={{ once: false }}
+          >
             <CustomButton variant="contained">Hire</CustomButton>
           </Stack>
         </Stack>

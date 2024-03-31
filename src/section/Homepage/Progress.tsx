@@ -6,6 +6,8 @@ import progressCircle1 from "../../assets/process/1.png";
 import progressCircle2 from "../../assets/process/2.png";
 import progressCircle3 from "../../assets/process/3.png";
 
+import { motion } from "framer-motion";
+
 function Progress() {
   const theme = useTheme();
   const data = [
@@ -34,15 +36,34 @@ function Progress() {
 
   return (
     <Stack
-      flexDirection={"row"}
+      flexDirection={{ xs: "column", md: "row" }}
       justifyContent={"space-between"}
-      width={"80%"}
+      width={{ xs: "95%", md: "80%" }}
       margin={"auto"}
-      gap={5}
     >
-      {data.map((item: any) => {
+      {data.map((item: any, index: number) => {
         return (
-          <Stack alignItems={"center"} my={15} gap={2}>
+          <Stack
+            alignItems={"center"}
+            my={{ xs: 2, md: 15 }}
+            gap={2}
+            component={motion.div}
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 1,
+                type: "spring",
+                delay: index / 5 + 0.05,
+                stiffness: 260,
+              },
+            }}
+            viewport={{ once: false }}
+          >
             <span style={{ position: "relative", width: 100, height: 100 }}>
               <img src={item.image} alt="" style={{ position: "absolute" }} />
               <span
